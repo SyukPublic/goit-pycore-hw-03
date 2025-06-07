@@ -49,7 +49,7 @@ if __name__ == "__main__":
         print(e)
 
     try:
-        print(normalize_phone('\n\troman  +38(067)\t123 4567'))
+        print(normalize_phone('\n\tabc  +38(067)\t123 4567'))
     except Exception as e:
         print(e)
 
