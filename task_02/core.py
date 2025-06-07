@@ -35,10 +35,9 @@ def get_numbers_ticket(min_number: int, max_number: int, quantity: int) -> typin
             )
 
         numbers = random.sample(list(range(min_number, max_number + 1)), quantity)
-    except ValueError as e:
+    except ValueError:
         # The parameter has an incorrect value
         # Do nothing, log error if needed
-        # print(e)
         pass
     except Exception as e:
         # An unexpected error occurred

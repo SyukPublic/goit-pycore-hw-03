@@ -62,7 +62,7 @@ def normalize_phone(phone_number: typing.Optional[str]) -> typing.Optional[str]:
             raise ValueError('String is not a valid phone number')
 
         return country_code +  carrier_code + number
-    except ValueError as e:
+    except ValueError:
         # The parameter has an incorrect value
         # Raise exception to the upper level
         raise Exception('Incorrect phone number.')
