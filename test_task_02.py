@@ -42,3 +42,8 @@ if __name__ == "__main__":
         print(get_numbers_ticket(1, 1000, 0))
     except Exception as e:
         print(e)
+
+    try:
+        print(get_numbers_ticket(None, 1000, 0))
+    except Exception as e:
+        print(e)

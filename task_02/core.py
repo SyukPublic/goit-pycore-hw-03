@@ -11,12 +11,11 @@ import random
 def get_numbers_ticket(min_number: int, max_number: int, quantity: int) -> typing.List[int]:
     """The function generates a list of unique random numbers of the specified length within the given range.
 
-    :param min_number: Minimum possible number in the set (must be equal or greater than 1)
-    :param max_number: Maximum possible number in the set (must be equal or greater than 1000)
-    :param quantity: Number of values to be selected (list of integer)
+    :param min_number: Minimum possible number in the set (int, mandatory, must be equal or greater than 1)
+    :param max_number: Maximum possible number in the set (int, mandatory, must be equal or greater than 1000)
+    :param quantity: Number of values to be selected (int, mandatory, must be in the range of min_number and max_number)
     :return: A list of unique random numbers within a specified range (list of integer)
     """
-    numbers: typing.List[int] = []
 
     try:
         # Validate the input parameters' value
@@ -34,15 +33,18 @@ def get_numbers_ticket(min_number: int, max_number: int, quantity: int) -> typin
                 'minimum and maximum possible numbers'
             )
 
-        numbers = random.sample(list(range(min_number, max_number + 1)), quantity)
+        # Generate a sequence of numbers from min_number to max_number inclusive
+        # Select a quantity of unique random values from the previously generated sequence
+        numbers: typing.List[int] = random.sample(list(range(min_number, max_number + 1)), quantity)
+        # Sort the selected numbers
+        numbers.sort()
+
+        return numbers
     except ValueError:
         # The parameter has an incorrect value
         # Do nothing, log error if needed
-        pass
+        return []
     except Exception as e:
         # An unexpected error occurred
         # Raise exception to the upper level
         raise Exception('An unexpected error occurred: {error}.'.format(error=repr(e)))
-    finally:
-        numbers.sort()
-        return numbers
